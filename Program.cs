@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection.Metadata;
+using System.Text;
 using DesafioProjetoHospedagem.Models;
 
 Console.OutputEncoding = Encoding.UTF8;
@@ -22,4 +23,14 @@ reserva.CadastrarHospedes(hospedes);
 
 // Exibe a quantidade de hóspedes e o valor da diária
 Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
+
+decimal valorDiaria = reserva.CalcularValorDiaria();
+
+if (valorDiaria > 0)
+{
+  Console.WriteLine($"Valor diária: {valorDiaria}");
+}
+else
+{
+  Console.WriteLine("Não é possível calcular o valor da diária sem hóspedes cadastrados.");
+}
